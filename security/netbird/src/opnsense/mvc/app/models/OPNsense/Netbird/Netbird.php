@@ -28,7 +28,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-namespace OPNsense\netbird;
+namespace OPNsense\Netbird;
 
 use OPNsense\Base\BaseModel;
 

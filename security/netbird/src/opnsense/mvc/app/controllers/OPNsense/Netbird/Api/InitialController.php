@@ -28,17 +28,17 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-namespace OPNsense\netbird\Api;
+namespace OPNsense\Netbird\Api;
 
 use OPNsense\Base\ApiMutableModelControllerBase;
 
 /**
  * netbird settings controller
- * @package OPNsense\netbird
+ * @package OPNsense\Netbird
  */
 class InitialController extends ApiMutableModelControllerBase
 {
-    protected static $internalModelName = 'netbird';
-    protected static $internalModelClass = 'OPNsense\netbird\Initial';
+    protected static $internalModelName = 'Netbird';
+    protected static $internalModelClass = 'OPNsense\Netbird\Initial';
 
 }

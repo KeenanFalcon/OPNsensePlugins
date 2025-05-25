@@ -28,11 +28,11 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-namespace OPNsense\netbird;
+namespace OPNsense\Netbird;
 
 /**
  * Class IndexController
- * @package OPNsense\netbird
+ * @package OPNsense\Netbird
  */
 class IndexController extends \OPNsense\Base\IndexController
 {
@@ -40,6 +40,6 @@ class IndexController extends \OPNsense\Base\IndexController
     {
         $this->view->generalForm = $this->getForm("general");
         $this->view->initialUpForm = $this->getForm("initialup");
-        $this->view->pick('OPNsense/netbird/index');
+        $this->view->pick('OPNsense/Netbird/index');
     }
 }
