@@ -28,16 +28,16 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-namespace OPNsense\netbird;
+namespace OPNsense\Netbird;
 
 /**
  * Class ConstatusController
- * @package OPNsense\netbird
+ * @package OPNsense\Netbird
  */
 class ConstatusController extends \OPNsense\Base\IndexController
 {
     public function indexAction()
     {
-        $this->view->pick('OPNsense/netbird/constatus');
+        $this->view->pick('OPNsense/Netbird/constatus');
     }
 }
