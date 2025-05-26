@@ -1,0 +1,79 @@
+#!/bin/sh
+#
+# PROVIDE: netbird
+# REQUIRE: SERVERS  ## REQUIRE: FILESYSTEMS devfs  ## REQUIRE: NETWORKING
+# KEYWORD: shutdown
+#
+# Add the following lines to /etc/rc.conf.local or /etc/rc.conf
+# to enable this service:
+#
+# netbird_enable (bool):        Set it to YES to enable Netbird.
+#                                   Default is "NO".
+# netbird_config_file (str):	Set Netbird config file location.
+#                                   Default is "/var/db/netbird/config.json"
+# netbird_hostname (str):       Set a custom hostname for the device
+#                                   Default is "".
+# netbird_daemon_addr (str):    Set Daemon service address to serve CLI requests.
+#                                   Pattern to use [unix|tcp]://[path|host:port].
+#                                   Default is "unix:///var/run/netbird.sock".
+# netbird_log_file (str):       Set Netbird log path.
+#                                   If console is specified the log will be output to stdout.
+#                                   If syslog is specified the log will be sent to syslog daemon.
+#                                   Default is "/var/log/netbird/client.log".
+# netbird_log_level (str):      Set Netbird log level
+#                                   Default is "info".
+# netbird_tun_dev (str):        Set the name of the tun interface Netbird creates.
+#                                   Default is "wt0"
+# netbird_args (str):           Additional arguments to pass to Netbird
+#                                   Default is "" (empty string).
+
+. /etc/rc.subr
+
+name="netbird"
+rcvar=netbird_enable
+
+load_rc_config $name
+
+: ${netbird_enable:="NO"}
+: ${netbird_config_file:="/var/db/netbird/config.json"}
+: ${netbird_daemon_addr:="unix:///var/run/netbird.sock"}
+: ${netbird_hostname:=""}
+: ${netbird_log_file:="/var/log/netbird/client.log"}
+: ${netbird_log_level:="info"}
+: ${netbird_tun_dev:="wt0"}
+: ${netbird_args:=""}
+
+netbird_env="IS_DAEMON=1"
+
+pidfile="/var/run/${name}.pid"
+procname="/usr/local/bin/${name}"
+
+# command="/usr/sbin/daemon"
+# daemon_args="-P ${pidfile} -r -t \"${name}: daemon\""
+
+start_cmd="${name}_start"
+stop_postcmd="${name}_poststop"
+
+netbird_start()
+{
+    # Check for orphaned netbird network interface
+    # And if it exists, then destroy it
+    logger -s -t netbird "Starting ${name}."
+    /sbin/ifconfig ${netbird_tun_dev} >/dev/null 2>&1 && (
+        /sbin/ifconfig ${netbird_tun_dev} | fgrep -qw PID ||
+        /sbin/ifconfig ${netbird_tun_dev} destroy
+    )
+
+    /usr/sbin/daemon -p ${pidfile} -f -t ${name} ${procname} service run --config ${netbird_config_file} --log-level ${netbird_log_level} --log-file ${netbird_log_file}
+    # command_args="${daemon_args} ${procname} service run --config ${netbird_config_file} --log-level ${netbird_log_level} --daemon-addr ${netbird_daemon_addr} --log-file ${netbird_log_file}"
+}
+
+netbird_poststop()
+{
+    /sbin/ifconfig ${netbird_tun_dev} >/dev/null 2>&1 && (
+        logger -s -t netbird "Destroying ${netbird_tun_dev} adapter"
+        /sbin/ifconfig ${netbird_tun_dev} destroy || logger -s -t netbird "Failed to destroy ${netbird_tun_dev} adapter"
+    )
+}
+
+run_rc_command "$1"
