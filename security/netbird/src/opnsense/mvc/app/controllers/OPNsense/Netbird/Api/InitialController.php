@@ -38,7 +38,7 @@ use OPNsense\Base\ApiMutableModelControllerBase;
  */
 class InitialController extends ApiMutableModelControllerBase
 {
-    protected static $internalModelName = 'Netbird';
+    protected static $internalModelName = 'netbird';
     protected static $internalModelClass = 'OPNsense\Netbird\Initial';
 
 }
