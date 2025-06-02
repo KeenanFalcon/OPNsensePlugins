@@ -1,5 +1,5 @@
 <model>
-    <mount>//OPNsense/netbird-initial</mount>
+    <mount>//OPNsense/netbird/initial</mount>
     <description>
         Netbird initial setup
     </description>

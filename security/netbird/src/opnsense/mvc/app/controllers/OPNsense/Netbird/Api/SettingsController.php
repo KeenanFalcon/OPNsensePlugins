@@ -38,6 +38,6 @@ use OPNsense\Base\ApiMutableModelControllerBase;
  */
 class SettingsController extends ApiMutableModelControllerBase
 {
-    protected static $internalModelName = 'Netbird';
+    protected static $internalModelName = 'netbird';
     protected static $internalModelClass = 'OPNsense\Netbird\Netbird';
 }
