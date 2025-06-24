@@ -3,7 +3,6 @@ netbird_enable="YES"
 {% else %}
 netbird_enable="NO"
 {% endif %}
-osrelease_enable="YES"
 netbird_config_file="/usr/local/etc/netbird/config.json"
 netbird_log_file="syslog"
 netbird_log_level="info"
