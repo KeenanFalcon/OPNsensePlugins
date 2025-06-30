@@ -28,17 +28,17 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-namespace OPNsense\Netbird\Api;
-
-use OPNsense\Base\ApiMutableModelControllerBase;
+namespace OPNsense\Netbird;
 
 /**
- * netbird settings controller
+ * Class AuthenticationController
  * @package OPNsense\Netbird
  */
-class InitialController extends ApiMutableModelControllerBase
+class AuthenticationController extends \OPNsense\Base\IndexController
 {
-    protected static $internalModelName = 'netbird';
-    protected static $internalModelClass = 'OPNsense\Netbird\Initial';
-
+    public function indexAction()
+    {
+        $this->view->authenticationForm = $this->getForm("authentication");
+        $this->view->pick('OPNsense/Netbird/authentication');
+    }
 }

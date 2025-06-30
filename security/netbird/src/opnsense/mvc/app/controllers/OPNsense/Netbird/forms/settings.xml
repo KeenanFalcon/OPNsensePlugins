@@ -1,47 +1,47 @@
 <form>
     <field>
-        <id>netbird.general.Enabled</id>
+        <id>netbird.settings.enabled</id>
         <label>Enabled</label>
         <type>checkbox</type>
         <help>Enable Netbird</help>
     </field>
     <field>
-        <id>netbird.general.WgPort</id>
+        <id>netbird.settings.wgPort</id>
         <label>Wireguard Port</label>
         <type>text</type>
     </field>
     <field>
-        <id>netbird.general.DisableDNS</id>
+        <id>netbird.settings.disableDNS</id>
         <label>Disable Netbird DNS lookups</label>
         <type>checkbox</type>
         <help>Disables DNS lookups for the Netbird network.</help>
     </field>
     <field>
-        <id>netbird.general.DisableServerRoutes</id>
+        <id>netbird.settings.disableServerRoutes</id>
         <label>Disable Server Routes</label>
         <type>checkbox</type>
         <help>Prevents Netbird from being a routing peer for other Netbird peers.</help>
     </field>
     <field>
-        <id>netbird.general.DisableClientRoutes</id>
+        <id>netbird.settings.disableClientRoutes</id>
         <label>Disable Client Routes</label>
         <type>checkbox</type>
         <help>Prevents Netbird from setting client routes to other remote peers.</help>
     </field>
     <field>
-        <id>netbird.general.QuantumEnabled</id>
+        <id>netbird.settings.quantumEnabled</id>
         <label>Rosenpass Enabled</label>
         <type>checkbox</type>
         <help>Enable Rosenpass</help>
     </field>
     <field>
-        <id>netbird.general.QuantumPermissive</id>
+        <id>netbird.settings.quantumPermissive</id>
         <label>Rosenpass Permissive Mode</label>
         <type>checkbox</type>
         <help>Enable Rosenpass permissive mode</help>
     </field>
     <field>
-        <id>netbird.general.CarpIf</id>
+        <id>netbird.settings.carpIf</id>
         <label>CARP Interface</label>
         <type>dropdown</type>
         <help>If set to none Netbird up is executed and auto connect is enabled. If an interface is selected auto
@@ -49,7 +49,7 @@
         </help>
     </field>
     <field>
-        <id>netbird.general.VHID</id>
+        <id>netbird.settings.vhId</id>
         <label>CARP VHID</label>
         <type>text</type>
     </field>

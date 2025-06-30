@@ -32,6 +32,6 @@ namespace OPNsense\Netbird;
 
 use OPNsense\Base\BaseModel;
 
-class Initial extends BaseModel
+class Authentication extends BaseModel
 {
 }

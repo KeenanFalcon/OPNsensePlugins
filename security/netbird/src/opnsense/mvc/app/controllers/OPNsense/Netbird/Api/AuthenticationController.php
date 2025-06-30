@@ -28,18 +28,16 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-namespace OPNsense\Netbird;
+namespace OPNsense\Netbird\Api;
+
+use OPNsense\Base\ApiMutableModelControllerBase;
 
 /**
- * Class IndexController
+ * netbird settings controller
  * @package OPNsense\Netbird
  */
-class IndexController extends \OPNsense\Base\IndexController
+class AuthenticationController extends ApiMutableModelControllerBase
 {
-    public function indexAction()
-    {
-        $this->view->generalForm = $this->getForm("general");
-        $this->view->initialUpForm = $this->getForm("initialup");
-        $this->view->pick('OPNsense/Netbird/index');
-    }
+    protected static $internalModelName = 'authentication';
+    protected static $internalModelClass = 'OPNsense\Netbird\Authentication';
 }

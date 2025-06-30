@@ -30,8 +30,15 @@
 
 namespace OPNsense\Netbird;
 
-use OPNsense\Base\BaseModel;
-
-class Netbird extends BaseModel
+/**
+ * Class SettingsController
+ * @package OPNsense\Netbird
+ */
+class SettingsController extends \OPNsense\Base\IndexController
 {
+    public function indexAction()
+    {
+        $this->view->settingsForm = $this->getForm("settings");
+        $this->view->pick('OPNsense/Netbird/settings');
+    }
 }

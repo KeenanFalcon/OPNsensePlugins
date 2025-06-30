@@ -30,14 +30,8 @@
 
 namespace OPNsense\Netbird;
 
-/**
- * Class ConstatusController
- * @package OPNsense\Netbird
- */
-class ConstatusController extends \OPNsense\Base\IndexController
+use OPNsense\Base\BaseModel;
+
+class Settings extends BaseModel
 {
-    public function indexAction()
-    {
-        $this->view->pick('OPNsense/Netbird/constatus');
-    }
 }

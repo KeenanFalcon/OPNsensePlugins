@@ -41,13 +41,10 @@ use OPNsense\Netbird\Settings;
  * Class ServiceController
  * @package OPNsense\Netbird
  */
-class ServiceController extends ApiMutableServiceControllerBase
+class StatusController extends ApiMutableModelControllerBase
 {
-    const NETBIRD_CONFIG_JSON = '/usr/local/etc/netbird/config.json';
-    protected static $internalServiceClass = '\OPNsense\Netbird\Settings';
-    protected static $internalServiceEnabled = 'settings.enabled';
-    protected static $internalServiceTemplate = 'OPNsense/Netbird';
-    protected static $internalServiceName = 'netbird';
+    protected static $internalModelClass = '\OPNsense\Netbird\Status';
+    protected static $internalModelName = 'Netbird';
 
     public function conStatusAction(): string
     {

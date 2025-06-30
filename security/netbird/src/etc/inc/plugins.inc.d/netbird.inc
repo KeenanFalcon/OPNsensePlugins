@@ -30,28 +30,27 @@
 
 function netbird_enabled()
 {
-    return !(new \OPNsense\Netbird\Netbird())->general->Enabled->isEmpty();
+    return !(new \OPNsense\Netbird\Settings())->settings->enabled->isEmpty();
 }
 
 function netbird_services()
 {
-    $services = array();
+    $services = [];
 
     if (!netbird_enabled()) {
         return $services;
     }
 
-    $services[] = array(
+    $services[] = [
         'description' => gettext('Netbird'),
-        'configd' => array(
-            'restart' => array('netbird restart'),
-            'start' => array('netbird start'),
-            'stop' => array('netbird stop'),
-        ),
+        'configd' => [
+            'restart' => ['netbird restart'],
+            'start' => ['netbird start'],
+            'stop' => ['netbird stop'],
+        ],
         'name' => 'netbird',
-        'pidfile' => '/var/run/netbird.pid'
-    );
+        'pidfile' => '/var/run/netbird.pid',
+    ];
 
     return $services;
 }
-
